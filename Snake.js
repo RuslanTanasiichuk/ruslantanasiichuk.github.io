@@ -125,4 +125,4 @@ function show(){
     }
 }
 
-let timerId = setInterval(show, 70);
+let timerId = setInterval(show, 100);
