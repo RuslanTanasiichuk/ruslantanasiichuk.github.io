@@ -3,8 +3,8 @@
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 let button = document.getElementById("groupButton");
-const windowInnerWidth = window.innerWidth
-const windowInnerHeight = window.innerHeight
+const windowInnerWidth = window.innerWidth;
+const windowInnerHeight = window.innerHeight;
 button.style.height = Math.floor(windowInnerHeight * 0.3 * 0.75) + 'px';
 button.style.width = Math.floor(windowInnerHeight * 0.3 ) + 'px';
 
