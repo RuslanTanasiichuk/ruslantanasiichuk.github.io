@@ -6,10 +6,12 @@ function start(cont){
         document.body.offsetHeight, document.documentElement.offsetHeight,
         document.body.clientHeight, document.documentElement.clientHeight
     );
+    document.body.appendChild(canvas);
     canvas.style.width = '100%';
     canvas.style.position = 'absolute';
     canvas.style.top = '0px';
     canvas.style.left = '0px';
+    canvas.style.pointerEvents = 'none';
     let ctx = canvas.getContext("2d");
 
     let fps = cont.fps;
@@ -22,7 +24,6 @@ function start(cont){
     function rand(min, max){
         return Math.random() * (max - min) + min;
     }
-
     function SnowFlake(s){
         this.radius = s.radius;
         this.x = s.x;
@@ -37,12 +38,11 @@ function start(cont){
             radius: randRad = rand(sizeSnowFlake * 0.2, sizeSnowFlake * 0.7),
             x: rand(randRad, canvas.width - 2 * randRad),
             y: rand(randRad, canvas.height - 2 * randRad),
-            vx: rand(-2, 2),
-            vy: rand(-2, 2),
+            vx: rand(-2.3, 2.3),
+            vy: rand(-2.3, 2.3),
         });
     }
 
-    ctx.fillStyle = '#cdd1df';
     ctx.fillStyle = `rgba(205, 209, 223, ${opacity})`;
     function show(){
         let now = +new Date();
@@ -54,9 +54,9 @@ function start(cont){
             item.x += (item.x <= 0 ? 1 : 0) * canvas.width;
             item.x -= ~~(item.x / canvas.width) * canvas.width;
             item.y += (speedY + item.vy + item.radius) * diff * 0.002;
-            item.y -= ~~(item.y / canvas.height) * canvas.height;
-            item.vx += rand(-0.014, 0.014);
-            item.vy += rand(-0.014, 0.014);
+            item.y -= ~~(item.y / canvas.height) * (canvas.height + item.radius);
+            item.vx += rand(-0.015, 0.015);
+            item.vy += rand(-0.015, 0.015);
 
             ctx.beginPath();
             ctx.arc(item.x, item.y, item.radius, 0, 2 * Math.PI, !1);
@@ -65,8 +65,5 @@ function start(cont){
         });
         setTimeout(show, 1000/fps);
     }
-    let b = document.querySelector('body');
-    b.appendChild(canvas);
     show();
-
 }
