@@ -1,3 +1,30 @@
+let canvas = document.createElement('canvas');
+canvas.width = window.innerWidth;
+canvas.height = Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+);
+document.body.appendChild(canvas);
+canvas.style.width = '100%';
+canvas.style.position = 'absolute';
+canvas.style.top = '0px';
+canvas.style.left = '0px';
+canvas.style.pointerEvents = 'none';
+let ctx = canvas.getContext("2d");
+
+function SnowFlake(s){
+    this.radius = s.radius;
+    this.x = s.x;
+    this.y = s.y;
+    this.vx = s.vx;
+    this.vy = s.vy;
+}
+
+function rand(min, max){
+    return Math.random() * (max - min) + min;
+}
+
 function start(cont){
     //animation parameters
     let fps = cont.fps || 35;
@@ -8,32 +35,7 @@ function start(cont){
     let opacity = cont.opacity || 0.8;
     let colorRGB = cont.colorRGB || {r:205, g:209, b:223};
     /*----------------------------------*/
-    let canvas = document.createElement('canvas');
-    canvas.width = window.innerWidth;
-    canvas.height = Math.max(
-        document.body.scrollHeight, document.documentElement.scrollHeight,
-        document.body.offsetHeight, document.documentElement.offsetHeight,
-        document.body.clientHeight, document.documentElement.clientHeight
-    );
-    document.body.appendChild(canvas);
-    canvas.style.width = '100%';
-    canvas.style.position = 'absolute';
-    canvas.style.top = '0px';
-    canvas.style.left = '0px';
-    canvas.style.zIndex = "10000";
-    canvas.style.pointerEvents = 'none';
-    let ctx = canvas.getContext("2d");
-
-    function rand(min, max){
-        return Math.random() * (max - min) + min;
-    }
-    function SnowFlake(s){
-        this.radius = s.radius;
-        this.x = s.x;
-        this.y = s.y;
-        this.vx = s.vx;
-        this.vy = s.vy;
-    }
+    
     let randRad;
     let snowFlakes = new Array(Math.floor(canvas.width * canvas.height / 307200 * density));
     for(let i = 0; i<snowFlakes.length; i++){
