@@ -38,8 +38,8 @@ function start(cont){
             radius: randRad = rand(sizeSnowFlake * 0.2, sizeSnowFlake * 0.7),
             x: rand(randRad, canvas.width - 2 * randRad),
             y: rand(randRad, canvas.height - 2 * randRad),
-            vx: rand(-2.7, 2.7),
-            vy: rand(-2.7, 2.7),
+            vx: rand(-2.9, 2.9),
+            vy: rand(-2.9, 2.9),
         });
     }
 
@@ -55,8 +55,8 @@ function start(cont){
             item.x -= ~~(item.x / canvas.width) * canvas.width;
             item.y += (speedY + item.vy + item.radius) * diff * 0.002;
             item.y -= ~~(item.y / canvas.height) * (canvas.height + item.radius);
-            item.vx += rand(-0.02, 0.02);
-            item.vy += rand(-0.02, 0.02);
+            item.vx += rand(-0.022, 0.022);
+            item.vy += rand(-0.022, 0.022);
 
             ctx.beginPath();
             ctx.arc(item.x, item.y, item.radius, 0, 2 * Math.PI, !1);
