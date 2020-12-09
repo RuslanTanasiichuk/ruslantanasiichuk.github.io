@@ -41,8 +41,8 @@ function start(cont){
             radius: randRad = rand(sizeSnowFlake * 0.2, sizeSnowFlake * 0.8),
             x: rand(randRad, canvas.width - 2 * randRad),
             y: rand(randRad, canvas.height - 2 * randRad),
-            vx: rand(-3.3, 3.3),
-            vy: rand(-3.6, 3.6),
+            vx: rand(-4, 4),
+            vy: rand(-4, 4),
         });
     }
 
