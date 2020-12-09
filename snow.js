@@ -1,4 +1,13 @@
 function start(cont){
+    //animation parameters
+    let fps = cont.fps || 35;
+    let density = cont.density || 65;
+    let speedY = cont.speedY || 13;
+    let speedX = cont.speedX || 2;
+    let sizeSnowFlake = cont.sizeSnowFlake || 13;
+    let opacity = cont.opacity || 0.8;
+    let colorRGB = cont.colorRGB || {r:205, g:209, g:223};
+    /*----------------------------------*/
     let canvas = document.createElement('canvas');
     canvas.width = window.innerWidth;
     canvas.height = Math.max(
@@ -14,13 +23,6 @@ function start(cont){
     canvas.style.pointerEvents = 'none';
     let ctx = canvas.getContext("2d");
 
-    let fps = cont.fps;
-    let density = cont.density;
-    let speedY = cont.speedY;
-    let speedX = cont.speedX;
-    let sizeSnowFlake = cont.sizeSnowFlake;
-    let opacity = cont.opacity;
-
     function rand(min, max){
         return Math.random() * (max - min) + min;
     }
@@ -35,7 +37,7 @@ function start(cont){
     let snowFlakes = new Array(Math.floor(canvas.width * canvas.height / 307200 * density));
     for(let i = 0; i<snowFlakes.length; i++){
         snowFlakes[i] = new SnowFlake({
-            radius: randRad = rand(sizeSnowFlake * 0.2, sizeSnowFlake * 0.7),
+            radius: randRad = rand(sizeSnowFlake * 0.2, sizeSnowFlake * 0.8),
             x: rand(randRad, canvas.width - 2 * randRad),
             y: rand(randRad, canvas.height - 2 * randRad),
             vx: rand(-3, 3),
@@ -43,7 +45,7 @@ function start(cont){
         });
     }
 
-    ctx.fillStyle = `rgba(205, 209, 223, ${opacity})`;
+    ctx.fillStyle = `rgba(${colorRGB.r}, ${colorRGB.g}, ${colorRGB.b}, ${opacity})`;
     function show(){
         let now = +new Date();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
