@@ -20,7 +20,7 @@ function start(cont){
     canvas.style.position = 'absolute';
     canvas.style.top = '0px';
     canvas.style.left = '0px';
-    canvas.style.zIndex = "1000";
+    canvas.style.zIndex = "10000";
     canvas.style.pointerEvents = 'none';
     let ctx = canvas.getContext("2d");
 
