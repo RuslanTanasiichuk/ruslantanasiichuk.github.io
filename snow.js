@@ -6,7 +6,7 @@ function start(cont){
     let speedX = cont.speedX || 2;
     let sizeSnowFlake = cont.sizeSnowFlake || 13;
     let opacity = cont.opacity || 0.8;
-    let colorRGB = cont.colorRGB || {r:205, g:209, g:223};
+    let colorRGB = cont.colorRGB || {r:205, g:209, b:223};
     /*----------------------------------*/
     let canvas = document.createElement('canvas');
     canvas.width = window.innerWidth;
