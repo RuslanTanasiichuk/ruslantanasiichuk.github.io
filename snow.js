@@ -11,6 +11,7 @@ canvas.style.position = 'absolute';
 canvas.style.top = '0px';
 canvas.style.left = '0px';
 canvas.style.pointerEvents = 'none';
+canvas.style.zIndex = "10000";
 let ctx = canvas.getContext("2d");
 
 function SnowFlake(s){
